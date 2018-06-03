@@ -1,9 +1,9 @@
 package com.net.concurrent;
 
 import java.io.File;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 
 public class SearchFileTest {
 
@@ -14,7 +14,10 @@ public class SearchFileTest {
         //testSingle(filePath, keyWorld);
 
         //Total seconds:6
-        testMultiple(filePath, keyWorld);
+        //testMultiple(filePath, keyWorld);
+
+        //Total seconds:5
+        testForkJoin(filePath, keyWorld);
 
     }
 
@@ -56,6 +59,20 @@ public class SearchFileTest {
         System.out.println("Total seconds:" + (System.currentTimeMillis() - start) / 1000);
 
     }
+
+    public static void testForkJoin(String filePath, String keyWorld){
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        long start = System.currentTimeMillis();
+        SearchFileTask searchFileTask = new SearchFileTask(filePath, keyWorld);
+        try {
+            forkJoinPool.invoke(searchFileTask);
+        } finally {
+            forkJoinPool.shutdown();
+        }
+        System.out.println("Total seconds:" + (System.currentTimeMillis() - start) / 1000);
+
+    }
+
 
 
 }
