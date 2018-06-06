@@ -62,9 +62,13 @@
                                 <echo message="path separator: ${path.separator}"/>
                                 <replace file="${classpath_file}" token="${path.separator}" value="&#10;"/>
                                 <replaceregexp file="${classpath_file}" match=".*/" replace="${lib-dir}/" byline="true" flags="sg"/>
+                                <replaceregexp file="${classpath_file}" match=".*/classes\r?\n" replace="./classes&#10;${lib-dir}/${project.build.finalName}.jar&#10;" byline="false"/>
+                                <replaceregexp file="${classpath_file}" match="\r?\n" replace=":" byline="false" flags="mg"/>
+                                <replaceregexp file="${classpath_file}" match="./classes:" replace="" byline="false" flags="mg"/>
 
                                 <echo message="runtime classpath: ${runtime_classpath}"/>
                                 <echo message="project build directory: ${project.build.directory}"/>
+                                <echo message="project build finalName: ${project.build.finalName}"/>
                             </target>
                         </configuration>
                         <goals>
