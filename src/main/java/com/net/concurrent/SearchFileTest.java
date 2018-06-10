@@ -1,6 +1,10 @@
 package com.net.concurrent;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
@@ -8,8 +12,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class SearchFileTest {
 
+    /*
+    * http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/
+    * */
     public static void main(String[] args) throws Exception {
         String filePath = "C:\\Program Files";
+        String file = "E:\\message\\huaqi\\undo.txt";
         String keyWorld = "java";
 
         //Total counts:337
@@ -26,7 +34,11 @@ public class SearchFileTest {
 
         //Total counts:337
         //Total seconds:8
-        testForkJoinTask(filePath, keyWorld);
+        //testForkJoinTask(filePath, keyWorld);
+
+        //Total counts:337
+        //Total seconds:8
+        testStream(file, keyWorld);
 
     }
 
@@ -107,6 +119,16 @@ public class SearchFileTest {
         }
         count = searchFileTask.join();
         System.out.println("Total counts:" + count);
+        System.out.println("Total seconds:" + (System.currentTimeMillis() - start) / 1000);
+
+    }
+
+    public static void testStream(String file, String keyWorld) throws IOException {
+        long start = System.currentTimeMillis();
+
+        Files.lines(Paths.get(file)).filter(f -> f.contains(keyWorld)).forEach(System.out::println);
+
+        //System.out.println("Total counts:" + count);
         System.out.println("Total seconds:" + (System.currentTimeMillis() - start) / 1000);
 
     }
