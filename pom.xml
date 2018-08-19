@@ -13,7 +13,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.2.RELEASE</version>
-    </parent>JpaRepository
+    </parent>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -33,22 +33,23 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.21</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
             <version>1.1-groovy-2.4</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
 
@@ -77,10 +78,15 @@
                                 <replace file="${classpath_file}" token="\" value="/"/>
                                 <echo message="path separator: ${path.separator}"/>
                                 <replace file="${classpath_file}" token="${path.separator}" value="&#10;"/>
-                                <replaceregexp file="${classpath_file}" match=".*/" replace="${lib-dir}/" byline="true" flags="sg"/>
-                                <replaceregexp file="${classpath_file}" match=".*/classes\r?\n" replace="./classes&#10;${lib-dir}/${project.build.finalName}.jar&#10;" byline="false"/>
-                                <replaceregexp file="${classpath_file}" match="\r?\n" replace=":" byline="false" flags="mg"/>
-                                <replaceregexp file="${classpath_file}" match="./classes:" replace="" byline="false" flags="mg"/>
+                                <replaceregexp file="${classpath_file}" match=".*/" replace="${lib-dir}/" byline="true"
+                                               flags="sg"/>
+                                <replaceregexp file="${classpath_file}" match=".*/classes\r?\n"
+                                               replace="./classes&#10;${lib-dir}/${project.build.finalName}.jar&#10;"
+                                               byline="false"/>
+                                <replaceregexp file="${classpath_file}" match="\r?\n" replace=":" byline="false"
+                                               flags="mg"/>
+                                <replaceregexp file="${classpath_file}" match="./classes:" replace="" byline="false"
+                                               flags="mg"/>
 
                                 <echo message="runtime classpath: ${runtime_classpath}"/>
                                 <echo message="project build directory: ${project.build.directory}"/>

@@ -17,10 +17,6 @@ public class User {
     @Column(name = "createts")
     private Timestamp createts;
 
-    /*@Lob
-    @Column(name = "xml")
-    private byte[] xmlBytes;*/
-
     public void setId(Long id) {
         this.id = id;
     }
