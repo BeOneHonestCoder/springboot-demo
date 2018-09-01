@@ -107,6 +107,22 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <!--
+            http://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.2/example_xjc_basic.html
+            -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <sources>
+                        <source>src/main/resources/schema/test.xsd</source>
+                    </sources>
+                    <xjbSources>
+                        <xjbSource>src/main/resources/xjb/test.xjb</xjbSource>
+                    </xjbSources>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
