@@ -6,15 +6,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TestUserXMLRepository {
-    private String fileName = "C:\\Users\\lenovo\\IdeaProjects\\springboot-demo\\src\\test\\java\\com\\net\\jpa\\UserXML.xml";
+    private String fileName = "src\\test\\resources\\UserXML.xml";
 
     @Autowired
     private UserXMLRepository userXMLRepository;
@@ -27,7 +25,7 @@ public class TestUserXMLRepository {
 
     @Test
     public void testSave() throws Exception {
-        InputStream input = new FileInputStream (fileName);
+        InputStream input = this.getClass().getResourceAsStream(fileName);
         String xml = IOUtils.toString(input, "UTF-8");
         UserXML userXML = new UserXML();
         userXML.setId((long) 1);
