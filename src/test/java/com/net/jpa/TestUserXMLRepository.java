@@ -12,7 +12,7 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TestUserXMLRepository {
-    private String fileName = "src\\test\\resources\\UserXML.xml";
+    private String fileName = "com/net/jpa/UserXML.xml";
 
     @Autowired
     private UserXMLRepository userXMLRepository;
@@ -25,7 +25,7 @@ public class TestUserXMLRepository {
 
     @Test
     public void testSave() throws Exception {
-        InputStream input = this.getClass().getResourceAsStream(fileName);
+        InputStream input = this.getClass().getClassLoader().getResourceAsStream(fileName);
         String xml = IOUtils.toString(input, "UTF-8");
         UserXML userXML = new UserXML();
         userXML.setId((long) 1);
