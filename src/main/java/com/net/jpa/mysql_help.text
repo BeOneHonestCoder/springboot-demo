@@ -25,6 +25,6 @@ CREATE TABLE IF NOT EXISTS `user_dtl`(
 
 CREATE TABLE IF NOT EXISTS `user_xml`(
    `id` INT AUTO_INCREMENT,
-   `xmlBytes` BLOB NOT NULL,
+   `xml` BLOB NOT NULL,
    PRIMARY KEY ( `id` )
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

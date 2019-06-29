@@ -1,6 +1,7 @@
 package com.net.jpa;
 
 import javax.persistence.*;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "user_xml")
@@ -26,5 +27,13 @@ public class UserXML {
 
     public byte[] getXmlBytes() {
         return xmlBytes;
+    }
+
+    @Override
+    public String toString() {
+        return "UserXML{" +
+                "id=" + id +
+                ", xmlBytes=" + new String(xmlBytes) +
+                '}';
     }
 }

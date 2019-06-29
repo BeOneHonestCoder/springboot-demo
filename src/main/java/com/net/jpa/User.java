@@ -49,4 +49,13 @@ public class User {
         return createts;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthday=" + birthday +
+                ", createts=" + createts +
+                '}';
+    }
 }
