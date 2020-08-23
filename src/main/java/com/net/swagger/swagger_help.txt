@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/62845550/swagger-api-documentation-in-spring-api-gateway

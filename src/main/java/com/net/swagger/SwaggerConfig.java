@@ -1,5 +1,6 @@
-package com.net.configuration;
+package com.net.swagger;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -9,18 +10,20 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+import static springfox.documentation.builders.RequestHandlerSelectors.any;
+
 @Configuration
-public class SwaggerBean {
+@ConditionalOnProperty(value = {"springfox.documentation.enabled"}, havingValue = "true", matchIfMissing = true)
+public class SwaggerConfig {
 
     @Bean
     public Docket petApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("restful-api")
-                .apiInfo(apiInfo())
                 .select()
+                .apis(any())
                 .paths(PathSelectors.any())
                 .build()
-                .enableUrlTemplating(true);
+                .apiInfo(apiInfo());
     }
 
     private ApiInfo apiInfo() {
