@@ -1,10 +1,36 @@
 <!DOCTYPE HTML>
-<html>
-<head> 
-    <title>Getting Started: Serving Web Content</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search something</title>
+    <meta charset="UTF-8"/>
 </head>
 <body>
-    <p>helloworld <a href="/sayHelloWorld">here</a></p>
+<form id="SearchForm" action="/search">
+    <div id="row-1" class="row1">
+        <a id="row-1-link" href="#">
+            <img id="front-image" alt="search" src="https://www5.jiumodiary.com/images/front/eleps.png" title="">
+        </a>
+    </div>
+    <div id="row-2" class="row2">
+        <input id="SearchWord" type="text" placeholder="Search" name="parameter" th:value="${parameter}" >
+    </div>
+    <div id="row-3" class="row3">
+        <button id="SearchButton" type="submit" value="Search" class="button">Search</button>
+    </div>
+</form>
+<main role="main">
+    <div id="searchResults">
+        <h3>
+            <span th:text="${totalSize}"/> Results in <span th:text="${totalTime}"/>
+        </h3>
+        <ui id="searchDataResults">
+            <li th:each="result : ${searchResults}">
+                <p th:utext="${result}"></p>
+            </li>
+        </ui>
+    </div>
+</main>
+
+<p>helloworld <a href="/sayHelloWorld">here</a></p>
 </body>
 </html>
