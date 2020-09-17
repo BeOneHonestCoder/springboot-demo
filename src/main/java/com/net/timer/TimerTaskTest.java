@@ -1,4 +1,4 @@
-package com.net.Timer;
+package com.net.timer;
 
 import java.util.Timer;
 
