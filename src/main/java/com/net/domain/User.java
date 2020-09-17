@@ -1,4 +1,4 @@
-package com.net.jpa;
+package com.net.domain;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

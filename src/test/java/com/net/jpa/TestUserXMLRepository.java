@@ -1,5 +1,6 @@
 package com.net.jpa;
 
+import com.net.domain.UserXML;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

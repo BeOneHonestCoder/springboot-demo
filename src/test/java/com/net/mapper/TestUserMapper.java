@@ -1,4 +1,4 @@
-package com.net.jpa;
+package com.net.mapper;
 
 import com.net.domain.User;
 import org.junit.Test;
@@ -11,33 +11,25 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TestUserRepository {
+public class TestUserMapper {
 
-    private Logger logger = LoggerFactory.getLogger(TestUserRepository.class);
+    private Logger logger = LoggerFactory.getLogger(TestUserMapper.class);
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Test
-    public void testFindOne(){
-        Optional<User> optionalUser = userRepository.findById((long) 1);
-        User user = optionalUser.get();
-        logger.info(user.toString());
-    }
+    private UserMapper userMapper;
 
     @Test
     public void testSave() throws Exception {
         User user = new User();
-        user.setId((long)1);
-        user.setName("zhangsan");
+        //user.setId((long)1);
+        user.setName("liwei");
         user.setBirthday(new Date());
         user.setCreatets(new Timestamp(new Date().getTime()));
 
-        User resultUser= userRepository.save(user);
-        logger.info(resultUser.toString());
+        int result = userMapper.saveUser(user);
+        logger.info("" + result);
     }
 }
