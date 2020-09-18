@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -31,5 +32,16 @@ public class TestUserMapper {
 
         int result = userMapper.saveUser(user);
         logger.info("" + result);
+    }
+
+    @Test
+    public void testQuery() throws Exception {
+        User user = new User();
+        user.setName("liwei");
+
+        List<User> users = userMapper.getUsersWithPageSize(user, 10);
+        users.forEach(
+                record -> logger.info("" + record)
+        );
     }
 }
