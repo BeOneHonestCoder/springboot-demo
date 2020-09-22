@@ -10,9 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.client.OAuth2ClientContext;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
-import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 
@@ -53,13 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @ConfigurationProperties(prefix = "oauth2")
     @Bean
-    public OAuth2ProtectedResourceDetails resourceDetails() {
+    public ResourceOwnerPasswordResourceDetails resourceDetails() {
         return new ResourceOwnerPasswordResourceDetails();
     }
 
-    @Bean
-    public OAuth2RestTemplate oauth2RestTemplate(OAuth2ProtectedResourceDetails resourceDetails,
-            OAuth2ClientContext oauth2ClientContext) {
-        return new OAuth2RestTemplate(resourceDetails, oauth2ClientContext);
-    }
 }
