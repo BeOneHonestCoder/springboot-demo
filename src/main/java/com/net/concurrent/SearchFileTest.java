@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
@@ -13,8 +14,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SearchFileTest {
 
     /*
-    * http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/
-    * */
+     * http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/
+     * */
     public static void main(String[] args) throws Exception {
         String filePath = "C:\\Program Files";
         String file = "E:\\message\\huaqi\\undo.txt";
@@ -26,7 +27,7 @@ public class SearchFileTest {
 
         //Total counts:337
         //Total seconds:10
-        //testMultiple(filePath, keyWorld);
+        testMultiple(filePath, keyWorld);
 
         //Total counts:337
         //Total seconds:8
@@ -38,7 +39,11 @@ public class SearchFileTest {
 
         //Total counts:337
         //Total seconds:8
-        testStream(file, keyWorld);
+        //testStream(file, keyWorld);
+
+        //Total counts:220
+        //Total seconds:7
+        //testCompletableFuture(filePath, keyWorld);
 
     }
 
@@ -51,7 +56,7 @@ public class SearchFileTest {
         File dirFile = new File(filePath);
         try {
             for (File file : dirFile.listFiles()) {
-                SearchFile searchFile = new SearchFile(file.getPath(), keyWorld,count);
+                SearchFile searchFile = new SearchFile(file.getPath(), keyWorld, count);
                 executorService.submit(searchFile);
             }
         } finally {
@@ -70,17 +75,17 @@ public class SearchFileTest {
         AtomicInteger count = new AtomicInteger();
         long start = System.currentTimeMillis();
 
-        loopFile(filePath,keyWorld,count);
+        loopFile(filePath, keyWorld, count);
         System.out.println("Total counts:" + count);
         System.out.println("Total seconds:" + (System.currentTimeMillis() - start) / 1000);
     }
 
-    public static void loopFile(String filePath, String keyWorld,AtomicInteger count){
+    public static void loopFile(String filePath, String keyWorld, AtomicInteger count) {
         File dirFile = new File(filePath);
         if (dirFile.listFiles() != null) {
             for (File file : dirFile.listFiles()) {
                 if (file.isDirectory()) {
-                    loopFile(file.getPath(), keyWorld,count);
+                    loopFile(file.getPath(), keyWorld, count);
                 } else {
                     if (file.getName().contains(keyWorld)) {
                         count.getAndIncrement();
@@ -92,11 +97,11 @@ public class SearchFileTest {
     }
 
 
-    public static void testForkJoinAction(String filePath, String keyWorld){
+    public static void testForkJoinAction(String filePath, String keyWorld) {
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         AtomicInteger count = new AtomicInteger();
         long start = System.currentTimeMillis();
-        SearchFileAction searchFileAction = new SearchFileAction(filePath, keyWorld,count);
+        SearchFileAction searchFileAction = new SearchFileAction(filePath, keyWorld, count);
         try {
             forkJoinPool.invoke(searchFileAction);
         } finally {
@@ -107,7 +112,7 @@ public class SearchFileTest {
 
     }
 
-    public static void testForkJoinTask(String filePath, String keyWorld){
+    public static void testForkJoinTask(String filePath, String keyWorld) {
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         AtomicInteger count = new AtomicInteger();
         long start = System.currentTimeMillis();
@@ -133,6 +138,15 @@ public class SearchFileTest {
 
     }
 
+    public static void testCompletableFuture(String filePath, String keyWorld) {
+        AtomicInteger count = new AtomicInteger();
+        long start = System.currentTimeMillis();
+
+        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> loopFile(filePath, keyWorld, count));
+        future.join();
+        System.out.println("Total counts:" + count);
+        System.out.println("Total seconds:" + (System.currentTimeMillis() - start) / 1000);
+    }
 
 
 }
