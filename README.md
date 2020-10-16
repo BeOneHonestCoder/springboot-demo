@@ -24,5 +24,8 @@ http://springfox.github.io/springfox/docs/current/
 Spring security + Oauth2
 https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide
 
-thymeleaf
+Thymeleaf
 https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html
+
+Druid
+https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
