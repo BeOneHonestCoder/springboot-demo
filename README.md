@@ -21,9 +21,12 @@ https://docs.spring.io/spring/docs/current/spring-framework-reference/
 
 Springfox
 http://springfox.github.io/springfox/docs/current/
+https://springdoc.org/
+http://localhost:8080/swagger-ui/index.html
 
 Spring security + Oauth2
 https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide
+https://javaguide.cn/system-design/security/basis-of-authority-certification.html#%E4%BB%80%E4%B9%88%E6%98%AF-oauth-2-0
 
 Thymeleaf
 https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html

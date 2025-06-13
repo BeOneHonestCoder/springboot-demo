@@ -1,7 +1,7 @@
 package com.net.domain;
 
-import javax.persistence.*;
-import java.util.Arrays;
+
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "user_xml")

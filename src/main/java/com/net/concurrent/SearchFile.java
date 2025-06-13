@@ -1,7 +1,6 @@
 package com.net.concurrent;
 
 import java.io.File;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SearchFile implements Runnable {
