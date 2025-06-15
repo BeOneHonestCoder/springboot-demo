@@ -20,6 +20,11 @@ public class Question26 {
         System.err.println(result);
         System.err.println(Arrays.toString(nums));
 
+        nums = new int[] {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        result = removeDuplicated1(nums);
+        System.err.println(result);
+        System.err.println(Arrays.toString(nums));
+
     }
 
     private static int removeDuplicated(int[] nums) {
@@ -40,5 +45,18 @@ public class Question26 {
         }
         System.err.println(uniqueNums);
         return cursor;
+    }
+
+    private static int removeDuplicated1(int[] nums) {
+        int fast = 1;
+        int slow = 1;
+        while (fast < nums.length) {
+            if (nums[fast] != nums[fast - 1]) {
+                nums[slow] = nums[fast];
+                slow++;
+            }
+            fast++;
+        }
+        return slow;
     }
 }

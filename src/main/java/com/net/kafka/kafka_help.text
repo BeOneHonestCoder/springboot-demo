@@ -1,0 +1,11 @@
+download
+https://kafka.apache.org/downloads
+
+kafka help document
+https://docs.spring.io/spring-kafka/reference/quick-tour.html
+https://kafka.apache.org/quickstart
+
+
+PS D:\Softword\kafka_2.13-4.0.0\bin\windows> .\kafka-storage.bat random-uuid
+PS D:\Softword\kafka_2.13-4.0.0\bin\windows> .\kafka-storage.bat format --standalone -t 4bY4-4ojT-e3L7qDTZSTcw -c ..\..\config\server.properties
+PS D:\Softword\kafka_2.13-4.0.0\bin\windows> .\kafka-server-start.bat ..\..\config\server.properties

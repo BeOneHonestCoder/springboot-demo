@@ -26,21 +26,20 @@ public class SecurityConfig {
             "/v3/api-docs/**"
     };
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(WHITE_LIST).permitAll()
-                        .anyRequest().authenticated()
-                )
-                .csrf(csrf -> csrf.disable());
+                        .anyRequest().permitAll()
+                );
         return http.build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
