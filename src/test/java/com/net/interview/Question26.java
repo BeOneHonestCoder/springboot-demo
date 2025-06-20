@@ -6,25 +6,12 @@ import java.util.Set;
 
 public class Question26 {
 
-
-    /**
-     * Input: nums = [1, 1, 2]
-     * Output: 2, nums = [1, 2, _]
-     */
     public static void main(String[] args) {
-
-        //int[] nums = new int[]{1, 2, 3};
-        int[] nums = new int[] {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int[] nums = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
 
         int result = removeDuplicated(nums);
         System.err.println(result);
         System.err.println(Arrays.toString(nums));
-
-        nums = new int[] {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-        result = removeDuplicated1(nums);
-        System.err.println(result);
-        System.err.println(Arrays.toString(nums));
-
     }
 
     private static int removeDuplicated(int[] nums) {
@@ -58,5 +45,30 @@ public class Question26 {
             fast++;
         }
         return slow;
+    }
+
+    private static int[] moveZeroes(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i; j < nums.length; j++) {
+                if (nums[i] == 0 && nums[j] != 0) {
+                    nums[i] = nums[j];
+                    nums[j] = 0;
+                }
+            }
+        }
+        return nums;
+    }
+
+    private static int[] moveZeroes1(int[] nums) {
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                int temp = nums[j];
+                nums[j] = nums[i];
+                nums[i] = temp;
+                j++;
+            }
+        }
+        return nums;
     }
 }

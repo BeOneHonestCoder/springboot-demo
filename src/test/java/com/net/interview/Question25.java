@@ -12,6 +12,11 @@ public class Question25 {
         printList(reversed);
     }
 
+
+    /**
+     * 1 -> 2 -> 3 -> null
+     * 3 -> 2 -> 1 -> null
+     */
     private static ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode curr = head;

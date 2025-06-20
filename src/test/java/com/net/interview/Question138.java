@@ -14,7 +14,7 @@ public class Question138 {
         map.put(person, value);
 
         Map<Persion, Integer> concurrentMap = new ConcurrentHashMap<>();
-        concurrentMap.compute(person, (k,v)->(v == null) ? 1 : v + 1);
+        concurrentMap.compute(person, (k, v) -> (v == null) ? 1 : v + 1);
     }
 
     private static class Persion {
