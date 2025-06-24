@@ -9,6 +9,10 @@ public class Question169 {
         int[] nums = new int[]{2, 2, 1, 1, 1, 2, 2};
         int result = majorityElement(nums);
         System.err.println(result);
+
+        int[] nums1 = new int[]{2, 2, 1, 1, 1, 2, 2};
+        int result1 = majorityElement1(nums1);
+        System.err.println(result1);
     }
 
     private static int majorityElement(int[] nums) {
@@ -36,14 +40,5 @@ public class Question169 {
             }
         }
         return -1;
-    }
-
-    private static int singleNumber(int[] nums) {
-        int result = 0;
-        for (int num : nums) {
-            //result ^= num;
-            result = result ^ num;
-        }
-        return result;
     }
 }

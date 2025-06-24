@@ -1,14 +1,15 @@
 package com.net.interview;
 
-import java.util.Arrays;
-
 public class Question35 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 3, 5, 8};
-        int result = searchInsert1(nums, 9);
+        int[] nums = new int[]{1, 3, 5, 6};
+        int result = searchInsert(nums, 5);
         System.err.println(result);
-        System.err.println(Arrays.toString(nums));
+
+        int[] nums1 = new int[]{1, 3, 5, 6};
+        int result1 = searchInsert1(nums1, 5);
+        System.err.println(result1);
     }
 
     private static int searchInsert(int[] nums, int target) {
