@@ -4,11 +4,26 @@ https://github.com/tporadowski/redis/releases
 
 redis help document
 https://docs.spring.io/spring-data/redis/reference/redis/getting-started.html
+https://redis.io/docs/latest/commands/
 
-C:\Users\lenov>redis-cli.exe PING
+C:\Users\lenov>redis-cli PING
 PONG
+C:\Users\lenov>redis-server --version
+Redis server v=5.0.14.1 sha=ec77f72d:0 malloc=jemalloc-5.2.1-redis bits=64 build=5627b8177c9289c
 
-C:\Users\lenov>redis-cli.exe GET user:1001
-"Alice"
+C:\Users\lenov>redis-cli -h 127.0.0.1 -p 6379
+127.0.0.1:6379> help KEYS
+127.0.0.1:6379> GET user:1001
+127.0.0.1:6379> SET user:1002 '{name:"ZhangSan",age:28}'
 
+127.0.0.1:6379> HSET user:1003 name WangWu
+127.0.0.1:6379> HGET user:1003 name
 
+127.0.0.1:6379> LPUSH user:1004 ZhangSan
+127.0.0.1:6379> LPOP user:1004
+
+127.0.0.1:6379> SADD user:1005 ZhangSan
+127.0.0.1:6379> SREM user:1005 ZhangSan
+
+127.0.0.1:6379> ZADD user:1006 85 ZhangSan
+127.0.0.1:6379> ZREM user:1006 ZhangSan
