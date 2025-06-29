@@ -1,2 +1,6 @@
 http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html
 http://www.ruanyifeng.com/blog/2019/04/github-oauth.html
+https://github.com/spring-projects/spring-security-samples
+https://github.com/spring-projects/spring-security-samples/tree/main/servlet/spring-boot/java/oauth2/login
+https://docs.spring.io/spring-security/reference/servlet/architecture.html
+https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html

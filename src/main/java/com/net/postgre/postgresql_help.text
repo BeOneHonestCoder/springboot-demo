@@ -1,0 +1,13 @@
+download
+https://www.postgresql.org/download/
+
+mysql help document
+https://www.postgresql.org/docs/current/
+https://www.postgresql.org/docs/current/tutorial-sql.html
+
+C:\Program Files\PostgreSQL\17\bin>psql --version
+C:\Program Files\PostgreSQL\17\bin>psql -U postgres
+postgres=# SELECT version();
+postgres=# SELECT current_database();
+postgres=# CREATE DATABASE mydb;
+postgres=# \c mydb

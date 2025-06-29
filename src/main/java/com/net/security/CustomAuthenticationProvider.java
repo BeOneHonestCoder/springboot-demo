@@ -20,6 +20,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * Check DefaultSecurityFilterChain
+     * UsernamePasswordAuthenticationFilter
+     * return this.getAuthenticationManager().authenticate(authRequest);
+     * ProviderManager.authenticate
+     * for(AuthenticationProvider provider : this.getProviders()) {  (Default implement DaoAuthenticationProvider)
+     */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();

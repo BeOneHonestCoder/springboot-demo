@@ -34,6 +34,8 @@ public class SecurityConfig {
                         .requestMatchers(WHITE_LIST).permitAll()
                         .anyRequest().permitAll()
                 );
+        //Default class DefaultLoginPageGeneratingFilter
+        //http.oauth2Login(withDefaults());
         return http.build();
     }
 
