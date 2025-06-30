@@ -1,6 +1,6 @@
 package com.net.interview;
 
-public class Question25 {
+public class Question206 {
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
