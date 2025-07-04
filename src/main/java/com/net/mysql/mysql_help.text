@@ -18,14 +18,17 @@ mysql> create DATABASE test;
 mysql> use test;
 mysql> show tables;
 mysql> desc user_dtl;
+mysql> ALTER TABLE `user_dtl` MODIFY COLUMN `createts` DATE NOT NULL;
+mysql> INSERT INTO `user_dtl` (`name`, `birthday`) VALUES ('wangwu', '1990-05-15');
 
 
 CREATE TABLE IF NOT EXISTS `user_dtl`(
    `id` INT AUTO_INCREMENT,
    `name` VARCHAR(100) NOT NULL,
-   `birthday` DATE,
-   `createts` TIMESTAMP,
-   PRIMARY KEY ( `id` )
+   `birthday` DATE NOT NULL,
+   `createts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   PRIMARY KEY ( `id` ),
+   UNIQUE KEY (`name`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

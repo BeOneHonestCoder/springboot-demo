@@ -13,8 +13,13 @@
         `createts`)
         VALUES (#{user.name},
         #{user.birthday},
-        #{user.createts})
+        NOW())
     </insert>
+    <update id="updateUser" parameterType="com.net.domain.User">
+        UPDATE user_dtl
+        SET name=#{user.name}, birthday=#{user.birthday}, createts=NOW()
+        WHERE id=#{user.id}
+    </update>
     <delete id="deleteById" parameterType="java.util.Map">
         DELETE
         FROM `user_dtl`
@@ -33,6 +38,17 @@
             </if>
         </where>
         limit #{pageSize}
+    </select>
+    <select id="findAll" resultMap="userResultMap">
+        select
+        <include refid="column_list"/>
+        from user_dtl
+    </select>
+    <select id="findById" parameterType="long" resultMap="userResultMap">
+        select
+        <include refid="column_list"/>
+        from user_dtl
+        where id = #{id}
     </select>
     <sql id="column_list">
         id,name,birthday,createts
