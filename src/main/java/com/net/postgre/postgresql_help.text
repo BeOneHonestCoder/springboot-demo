@@ -9,5 +9,16 @@ C:\Program Files\PostgreSQL\17\bin>psql --version
 C:\Program Files\PostgreSQL\17\bin>psql -U postgres
 postgres=# SELECT version();
 postgres=# SELECT current_database();
+postgres=# SELECT datname FROM pg_database;
 postgres=# CREATE DATABASE mydb;
 postgres=# \c mydb
+mydb=# \dt;
+mydb=# INSERT INTO user_dtl (name, birthday) VALUES ('wangwu', '1990-05-15');
+mydb=# select * from user_dtl;
+
+CREATE TABLE IF NOT EXISTS user_dtl (
+   id SERIAL PRIMARY KEY,
+   name VARCHAR(100) NOT NULL UNIQUE,
+   birthday DATE NOT NULL,
+   createts TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

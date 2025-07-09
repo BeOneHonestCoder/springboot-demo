@@ -13,6 +13,7 @@
         <spring-cloud.version>2025.0.0</spring-cloud.version>
         <druid.version>1.2.8</druid.version>
         <mysql.version>8.0.28</mysql.version>
+        <postgresql.version>42.6.2</postgresql.version>
     </properties>
 
     <parent>
@@ -84,6 +85,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
