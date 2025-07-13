@@ -9,3 +9,6 @@ https://kafka.apache.org/quickstart
 PS D:\Softword\kafka_2.13-4.0.0\bin\windows> .\kafka-storage.bat random-uuid
 PS D:\Softword\kafka_2.13-4.0.0\bin\windows> .\kafka-storage.bat format --standalone -t 4bY4-4ojT-e3L7qDTZSTcw -c ..\..\config\server.properties
 PS D:\Softword\kafka_2.13-4.0.0\bin\windows> .\kafka-server-start.bat ..\..\config\server.properties
+PS D:\Softword\kafka_2.13-4.0.0\bin\windows> .\kafka-topics.bat --create --topic orders --bootstrap-server localhost:9092
+PS D:\Softword\kafka_2.13-4.0.0\bin\windows> .\kafka-console-producer.bat --topic orders --bootstrap-server localhost:9092
+PS D:\Softword\kafka_2.13-4.0.0\bin\windows> .\kafka-console-consumer.sh --topic orders --from-beginning --bootstrap-server localhost:9092
