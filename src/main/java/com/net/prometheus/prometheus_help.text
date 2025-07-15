@@ -1,0 +1,11 @@
+download
+https://prometheus.io/download/
+
+prometheus help document
+https://prometheus.io/docs/prometheus/latest/getting_started/
+https://grafana.com/docs/grafana/latest/getting-started/
+
+D:\Softword\prometheus-3.4.1.windows-amd64>.\prometheus.exe --config.file=prometheus.yml
+
+When prometheus is up, check http://localhost:9090/targets
+When app is up, check http://localhost:8080/actuator/prometheus
