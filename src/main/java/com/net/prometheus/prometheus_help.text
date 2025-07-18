@@ -1,9 +1,13 @@
 download
 https://prometheus.io/download/
+https://www.jaegertracing.io/download/
 
 prometheus help document
 https://prometheus.io/docs/prometheus/latest/getting_started/
 https://grafana.com/docs/grafana/latest/getting-started/
+https://opentelemetry.io/docs/languages/java/getting-started/
+https://opentelemetry.io/docs/demo/architecture/
+https://www.jaegertracing.io/docs/2.8/getting-started/
 
 D:\Softword\prometheus-3.4.1.windows-amd64>.\prometheus.exe --config.file=prometheus.yml
 

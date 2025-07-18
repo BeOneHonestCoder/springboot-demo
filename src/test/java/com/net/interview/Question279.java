@@ -3,7 +3,7 @@ package com.net.interview;
 
 import java.util.Arrays;
 
-public class Question297 {
+public class Question279 {
 
     public static void main(String[] args) {
         int result = numSquares(5);
