@@ -30,7 +30,7 @@ public class Question739 {
     private static int[] dailyTemperatures1(int[] temperatures) {
         int length = temperatures.length;
         int[] ans = new int[length];
-        Deque<Integer> stack = new LinkedList<Integer>();
+        Deque<Integer> stack = new LinkedList<>();
         for (int i = 0; i < length; i++) {
             int temperature = temperatures[i];
             while (!stack.isEmpty() && temperature > temperatures[stack.peek()]) {

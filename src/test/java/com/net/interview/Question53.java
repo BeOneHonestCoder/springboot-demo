@@ -23,14 +23,11 @@ public class Question53 {
     }
 
     private static int maxSubArray1(int[] nums) {
-        int maxSum = nums[0];
-        int currentSum = nums[0];
-
-        for (int i = 1; i < nums.length; i++) {
-            currentSum = Math.max(nums[i], currentSum + nums[i]);
-            maxSum = Math.max(maxSum, currentSum);
+        int pre = 0, maxAns = nums[0];
+        for (int x : nums) {
+            pre = Math.max(pre + x, x);
+            maxAns = Math.max(maxAns, pre);
         }
-
-        return maxSum;
+        return maxAns;
     }
 }

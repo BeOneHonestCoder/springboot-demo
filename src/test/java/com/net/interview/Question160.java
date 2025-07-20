@@ -58,7 +58,7 @@ public class Question160 {
             pB = pB == null ? headA : pB.next;
         }
 
-        return null;
+        return pA;
     }
 
     private static class ListNode {

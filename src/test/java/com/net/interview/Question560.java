@@ -11,6 +11,8 @@ public class Question560 {
         int k = 3;
         int result = subarraySum(nums, k);
         System.err.println(result);
+        result = subarraySum1(nums, k);
+        System.err.println(result);
     }
 
     private static int subarraySum(int[] nums, int k) {
@@ -39,6 +41,7 @@ public class Question560 {
             }
             prefixSumCount.put(sum, prefixSumCount.getOrDefault(sum, 0) + 1);
         }
+        System.err.println(prefixSumCount);
         return result;
     }
 }
