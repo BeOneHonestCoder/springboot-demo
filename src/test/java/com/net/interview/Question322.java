@@ -6,8 +6,8 @@ import java.util.Arrays;
 public class Question322 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2};
-        int result = coinChange(nums, 3);
+        int[] nums = new int[]{1, 2, 5};
+        int result = coinChange(nums, 11);
         System.err.println(result);
     }
 
