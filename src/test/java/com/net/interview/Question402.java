@@ -13,6 +13,8 @@ public class Question402 {
         int k = 3;
         String result = removeKdigits(num, k);
         System.err.println(result);
+        result = removeKdigits1(num, k);
+        System.err.println(result);
     }
 
     private static String removeKdigits1(String num, int k) {
@@ -34,7 +36,6 @@ public class Question402 {
         }
 
         StringBuilder sb = new StringBuilder();
-        // for loop will start from index as zero
         for (char c : stack) {
             sb.append(c);
         }

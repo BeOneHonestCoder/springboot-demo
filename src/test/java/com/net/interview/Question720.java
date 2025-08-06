@@ -11,6 +11,9 @@ public class Question720 {
         String[] words = new String[]{"a", "banana", "app", "appl", "ap", "apply", "apple"};
         String result = longestWord(words);
         System.err.println(result);
+        words = new String[]{"a", "banana", "app", "appl", "ap", "apply", "apple"};
+        result = longestWord1(words);
+        System.err.println(result);
     }
 
     private static String longestWord(String[] words) {
