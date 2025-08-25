@@ -25,7 +25,11 @@ public class RestSecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(WHITE_LIST).permitAll()
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
+                )
+                .oauth2ResourceServer(oauth2 ->
+                        oauth2
+                                .jwt(jwt -> {})
                 )
                 .csrf(csrf -> csrf.disable());
         return http.build();
