@@ -31,6 +31,9 @@ https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guid
 https://javaguide.cn/system-design/security/basis-of-authority-certification.html#%E4%BB%80%E4%B9%88%E6%98%AF-oauth-2-0
 https://auth0.com/
 https://www.jwt.io/
+https://docs.spring.io/spring-authorization-server/reference/getting-started.html
+https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html
+https://spring.io/projects/spring-session
 
 Thymeleaf
 https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html
