@@ -1,0 +1,18 @@
+DROP TABLE IF EXISTS `user_dtl`;
+
+CREATE TABLE `user_dtl`(
+   `id` INT AUTO_INCREMENT,
+   `name` VARCHAR(100) NOT NULL,
+   `birthday` DATE NOT NULL,
+   `createts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   PRIMARY KEY ( `id` ),
+   UNIQUE KEY (`name`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `user_xml`;
+
+CREATE TABLE `user_xml`(
+   `id` INT AUTO_INCREMENT,
+   `xml` BLOB NOT NULL,
+   PRIMARY KEY ( `id` )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
