@@ -13,13 +13,14 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 
-//@Configuration
-//@EnableWebSecurity
+@Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
     private static final String[] WHITE_LIST = {
             "/login**",
             "/logout**",
+            "/actuator/**",
             "/swagger-ui/**",
             "/swagger-resources/**",
             "/v3/api-docs",

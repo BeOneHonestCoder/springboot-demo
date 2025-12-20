@@ -7,14 +7,15 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
-@EnableWebSecurity
-@EnableMethodSecurity
+//@Configuration
+//@EnableWebSecurity
+//@EnableMethodSecurity
 public class RestSecurityConfig {
 
     private static final String[] WHITE_LIST = {
             "/login**",
             "/logout**",
+            "/actuator/**",
             "/swagger-ui/**",
             "/swagger-resources/**",
             "/v3/api-docs",

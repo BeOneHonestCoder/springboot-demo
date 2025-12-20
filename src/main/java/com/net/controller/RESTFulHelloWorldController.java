@@ -1,5 +1,10 @@
 package com.net.controller;
 
+
+import io.micrometer.tracing.Tracer;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,14 +15,15 @@ import com.net.domain.ObjectFactory;
 import com.net.domain.Student;
 import com.net.mapper.JsonMapper;
 
+import java.util.Optional;
+
 @RestController
+@Slf4j
+@RequiredArgsConstructor
 public class RESTFulHelloWorldController {
 
 	private final JsonMapper mapper;
-
-	public RESTFulHelloWorldController(JsonMapper mapper) {
-		this.mapper = mapper;
-	}
+	private final Tracer tracer;
 
 	@RequestMapping(value = "/sayRESTFulHelloWorld", method = RequestMethod.GET)
 	public Student sayHelloWorld(
@@ -34,9 +40,18 @@ public class RESTFulHelloWorldController {
 		Student std = ObjectFactory.getInstance().createStudent();
 		std.setId(1);
 		std.setName("JsonMapper");
-		
+
 		String json = mapper.writeValueAsString(std);
-		System.out.println(json);
+		//System.out.println(json);
+		log.info(json);
+
+		String traceId = MDC.get("traceId");
+		log.info("traceId from MDC: {}", traceId);
+
+		traceId = Optional.ofNullable(tracer.currentSpan())
+				.map(span -> span.context().traceId())
+				.orElse("none");
+		log.info("traceId from Tracer: {}", traceId);
 
 		return std;
 	}
