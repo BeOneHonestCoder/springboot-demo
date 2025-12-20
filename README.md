@@ -44,3 +44,6 @@ https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
 
 Flyway
 https://github.com/flyway/flyway
+
+ShedLock
+https://github.com/lukas-krecan/ShedLock
