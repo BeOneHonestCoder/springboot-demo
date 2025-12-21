@@ -1,10 +1,13 @@
 package com.net.controller;
 
 
+import com.net.client.JsonPlaceholderClient;
+import com.net.dto.Post;
 import io.micrometer.tracing.Tracer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +27,7 @@ public class RESTFulHelloWorldController {
 
 	private final JsonMapper mapper;
 	private final Tracer tracer;
+	private final JsonPlaceholderClient jsonPlaceholderClient;
 
 	@RequestMapping(value = "/sayRESTFulHelloWorld", method = RequestMethod.GET)
 	public Student sayHelloWorld(
@@ -54,6 +58,11 @@ public class RESTFulHelloWorldController {
 		log.info("traceId from Tracer: {}", traceId);
 
 		return std;
+	}
+
+	@GetMapping("/testFeign")
+	public Post testFeign(@RequestParam(defaultValue = "1") Long id) {
+		return jsonPlaceholderClient.getPostById(id);
 	}
 
 }
