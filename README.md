@@ -8,6 +8,7 @@ https://github.com/javastacks/spring-boot-best-practice
 application.properties
 https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 https://docs.spring.io/spring-boot/appendix/application-properties/index.html
+https://docs.spring.io/spring-cloud-gateway/reference/appendix.html
 
 Serving Web Content with Spring MVC
 https://spring.io/guides/gs/serving-web-content/
