@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS `user_dtl`;
+DROP TABLE IF EXISTS `user_xml`;
 
 CREATE TABLE `user_dtl`(
    `id` INT AUTO_INCREMENT,
@@ -8,8 +9,6 @@ CREATE TABLE `user_dtl`(
    PRIMARY KEY ( `id` ),
    UNIQUE KEY (`name`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-DROP TABLE IF EXISTS `user_xml`;
 
 CREATE TABLE `user_xml`(
    `id` INT AUTO_INCREMENT,

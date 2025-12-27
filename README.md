@@ -48,3 +48,6 @@ https://github.com/flyway/flyway
 
 ShedLock
 https://github.com/lukas-krecan/ShedLock
+
+FF4J
+https://github.com/ff4j/ff4j

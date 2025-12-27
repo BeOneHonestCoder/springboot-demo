@@ -31,6 +31,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf-> csrf.ignoringRequestMatchers("/api/ff4j/**", "/ff4j-web-console/**"))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(WHITE_LIST).permitAll()
                         .anyRequest().permitAll()
