@@ -44,10 +44,4 @@ public class RESTFulHelloWorldController {
         return "Hello Async";
     }
 
-    @GetMapping("/testFF4J")
-    public String testFF4J() {
-        helloWorldService.testFF4J();
-        return "Hello FF4J";
-    }
-
 }

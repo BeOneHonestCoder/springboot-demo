@@ -31,7 +31,6 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf-> csrf.ignoringRequestMatchers("/api/ff4j/**", "/ff4j-web-console/**"))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(WHITE_LIST).permitAll()
                         .anyRequest().permitAll()
@@ -48,12 +47,17 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-        UserDetails user = User.builder()
+        UserDetails admin = User.builder()
                 .username("admin")
                 .password(passwordEncoder.encode("123456"))
                 .roles("ADMIN")
                 .build();
-        return new InMemoryUserDetailsManager(user);
+        UserDetails user = User.builder()
+                .username("user")
+                .password(passwordEncoder.encode("123456"))
+                .roles("USER")
+                .build();
+        return new InMemoryUserDetailsManager(admin, user);
     }
 
 }

@@ -11,6 +11,7 @@ https://www.jaegertracing.io/docs/2.8/getting-started/
 https://zipkin.io/pages/quickstart
 
 Brave
+https://docs.spring.io/spring-boot/reference/actuator/tracing.html
 https://github.com/openzipkin/brave
 https://opentelemetry.io/docs/
 

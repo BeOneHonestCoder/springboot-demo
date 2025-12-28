@@ -9,9 +9,6 @@ import com.net.mapper.JsonMapper;
 import io.micrometer.tracing.Tracer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.ff4j.FF4j;
-import org.ff4j.core.Feature;
-import org.ff4j.property.Property;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +23,6 @@ public class HelloWorldService {
     private final Tracer tracer;
     private final JsonPlaceholderClient jsonPlaceholderClient;
     private final SyncService syncService;
-    private final FF4j ff4j;
 
     public void doSyncWork() {
         log.info("Started sync work");
@@ -54,15 +50,6 @@ public class HelloWorldService {
         //System.out.println(json);
         log.info(json);
         return std;
-    }
-
-    public void testFF4J() {
-        boolean testFlag = ff4j.check("Test");
-        log.info("Test FF4J enabled or not: {}", testFlag);
-        Feature testFeature = ff4j.getFeature("Test");
-        log.info("Test FF4J Feature: {}", testFeature);
-        Property<?> testProperty =  ff4j.getProperty("TestProperty");
-        log.info("Test FF4J Property: {}", testProperty);
     }
 
     private void printTrace() {

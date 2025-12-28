@@ -32,12 +32,4 @@ public class SwaggerConfig {
                 .build();
     }
 
-    @Bean
-    public GroupedOpenApi ff4jApi() {
-        return GroupedOpenApi.builder()
-                .group("ff4j")
-                .pathsToMatch("/api/ff4j/**")
-                .build();
-    }
-
 }
