@@ -15,7 +15,8 @@ public class SearchController {
 	@GetMapping(value = "/search")
 	public String search(@RequestParam(name = "parameter") String parameter, Model model) {
 		model.addAllAttributes(buildResults());
-		return "search";
+		model.addAttribute("parameter", parameter);
+		return "index";
 	}
 
 	private Map<String, Object> buildResults(){

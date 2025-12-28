@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="index-body">
+
+<div th:replace="~{common/header :: navbar}"></div>
+
+<div class="container">
+    <div class="search-section">
+        <div class="mb-4">
+            <a th:href="@{/}">
+                <img src="https://www5.jiumodiary.com/images/front/eleps.png" alt="logo" height="65">
+            </a>
+        </div>
+
+        <form th:action="@{/search}" method="get">
+            <div class="mb-3">
+                <input type="text" name="parameter" class="search-box"
+                       placeholder="输入关键字搜索..." th:value="${parameter}" autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-primary px-5 rounded-pill shadow-sm">搜索一下</button>
+        </form>
+    </div>
+
+    <main class="results-container mt-5" th:if="${searchResults != null}">
+        <p class="text-muted small mb-4">
+            找到 <span th:text="${totalSize ?: 0}" class="text-primary fw-bold">0</span> 条结果，耗时 <span th:text="${totalTime ?: '0ms'}">0ms</span>
+        </p>
+        <div th:each="result : ${searchResults}" class="result-card">
+            <div class="text-dark" th:utext="${result}">Result Item</div>
+        </div>
+    </main>
+
+    <div class="text-center py-5" th:if="${searchResults == null}">
+        <p class="text-secondary mb-3">开启你的智能搜索之旅</p>
+        <a th:href="@{/preview}" class="btn btn-outline-primary btn-sm rounded-pill px-4">查看功能预览</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

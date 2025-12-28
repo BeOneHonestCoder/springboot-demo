@@ -1,0 +1,219 @@
+/* =========================================
+   1. 全局基础重置
+   ========================================= */
+* {
+    box-sizing: border-box; /* 确保 padding 不会撑开容器宽度 */
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f8f9fa; /* 浅灰色背景，更有质感 */
+    margin: 0;
+    color: #333;
+}
+
+/* =========================================
+   2. 认证页面布局 (登录 & 注册)
+   ========================================= */
+/* 使用 flex 让卡片在屏幕正中间 */
+.auth-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.auth-container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 400px; /* 限制宽度，防止无限拉伸 */
+}
+
+/* =========================================
+   3. 搜索首页布局
+   ========================================= */
+.index-body {
+    padding-top: 100px; /* 顶部留白，让搜索框位于上方偏中 */
+    background-color: #ffffff;
+}
+
+.nav-header {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.logout-link {
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+}
+
+.logout-link:hover {
+    text-decoration: underline;
+}
+
+/* 搜索核心容器 */
+.search-section {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.search-box {
+    width: 100%;
+    padding: 14px 25px;
+    border-radius: 50px !important; /* 搜索框椭圆化 */
+    border: 1px solid #dfe1e5 !important;
+    font-size: 16px;
+    transition: box-shadow 0.2s;
+    outline: none;
+}
+
+.search-box:focus {
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    border-color: rgba(223, 225, 229, 0);
+}
+
+/* =========================================
+   4. 搜索结果样式
+   ========================================= */
+.results-container {
+    max-width: 650px;
+    margin: 30px auto 0;
+}
+
+.result-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: #007bff;
+}
+
+/* =========================================
+   5. 通用组件美化
+   ========================================= */
+/* 输入框通用聚焦效果 */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* 提示框微调 */
+.alert {
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* 调整按钮圆角 */
+.btn-primary, .btn-success {
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.rounded-pill {
+    border-radius: 50px !important;
+}
+
+/* 底部链接 */
+.footer-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- 特性预览页 (Feature Page) 专用样式 --- */
+
+/* 渐变展示卡片 */
+.feature-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 3rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* 模拟代码块 */
+.code-panel {
+    background: #282c34;
+    color: #abb2bf;
+    padding: 1.25rem;
+    border-radius: 8px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    text-align: left;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    border-left: 4px solid #c678dd;
+}
+
+/* 返回链接 */
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #007bff;
+}
+
+/* --- 导航栏微调 --- */
+.navbar { border-bottom: 1px solid #eee; }
+.nav-link { font-weight: 500; color: #555 !important; }
+.nav-link:hover { color: #007bff !important; }
+
+/* --- 特性预览页 (Feature Page) --- */
+.feature-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 3.5rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.code-panel {
+    background: #282c34;
+    color: #abb2bf;
+    padding: 1.25rem;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    border-left: 4px solid #c678dd;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 14px;
+}
+.back-link:hover { color: #007bff; }
