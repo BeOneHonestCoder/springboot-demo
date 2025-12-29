@@ -29,7 +29,7 @@ public class UserApiControllerTest {
 
     @Test
     public void should_return_all_users() throws Exception {
-        mockMvc.perform(get("/mysql/users"))
+        mockMvc.perform(get("/api/v1/users"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$").isArray())
@@ -40,7 +40,7 @@ public class UserApiControllerTest {
 
     @Test
     public void should_return_user_by_id() throws Exception {
-        mockMvc.perform(get("/mysql/users/1"))
+        mockMvc.perform(get("/api/v1/users/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id").value(1))
@@ -55,7 +55,7 @@ public class UserApiControllerTest {
 
         String json = objectMapper.writeValueAsString(newUser);
 
-        mockMvc.perform(post("/mysql/users")
+        mockMvc.perform(post("/api/v1/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isOk())
@@ -71,7 +71,7 @@ public class UserApiControllerTest {
 
         String json = objectMapper.writeValueAsString(updatedUser);
 
-        mockMvc.perform(put("/mysql/users/1")
+        mockMvc.perform(put("/api/v1/users/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isOk())
@@ -82,13 +82,13 @@ public class UserApiControllerTest {
 
     @Test
     public void should_delete_user() throws Exception {
-        mockMvc.perform(delete("/mysql/users/1"))
+        mockMvc.perform(delete("/api/v1/users/1"))
                 .andExpect(status().isNoContent());
     }
 
     @Test
     public void should_return_404_if_user_not_found() throws Exception {
-        mockMvc.perform(get("/mysql/users/999"))
+        mockMvc.perform(get("/api/v1/users/999"))
                 .andExpect(status().isNotFound());
     }
 

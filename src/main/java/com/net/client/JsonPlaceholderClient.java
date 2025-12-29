@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
         name = "jsonplaceholder",
-        url = "https://jsonplaceholder.typicode.com",
+        url = "${jsonplaceholder.url:https://jsonplaceholder.typicode.com}",
         configuration = HttpFeignClientConfig.class
 )
 public interface JsonPlaceholderClient {
