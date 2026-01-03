@@ -2,19 +2,30 @@
 <Configuration status="WARN" monitorInterval="30">
     <Properties>
         <Property name="log.level">INFO</Property>
-        <Property name="LOG_PATTERN">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{[%X{traceId},%X{spanId}]}{yellow} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx
-        </Property>
+        <Property name="CONSOLE_LOG_PATTERN">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{[%X{traceId},%X{spanId}]}{yellow} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx</Property>
+        <Property name="FILE_LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [%X{traceId},%X{spanId}] ${sys:PID} --- [%15.15t] %-40.40c{1.} : %m%n%xwEx</Property>
     </Properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT" follow="true">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <PatternLayout pattern="${CONSOLE_LOG_PATTERN}"/>
         </Console>
+        <RollingFile name="File" fileName="logs/app.log" filePattern="logs/app-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${FILE_LOG_PATTERN}"/>
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
         <Async name="Async" blocking="false">
             <appender-ref ref="Console"/>
+            <appender-ref ref="File"/>
         </Async>
     </Appenders>
     <Loggers>
         <logger name="org.springframework" level="warn"/>
+        <Logger name="zipkin2.reporter" level="error" />
         <Root level="${sys:log.level}">
             <AppenderRef ref="Async"/>
         </Root>

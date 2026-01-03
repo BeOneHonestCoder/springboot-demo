@@ -1,0 +1,19 @@
+download
+https://www.docker.com/products/docker-desktop/
+
+docker help document
+https://docs.docker.com/desktop/setup/install/windows-install/
+https://docs.docker.com/compose/
+https://vuepress.mirror.docker-practice.com/
+
+ELK
+Elasticsearch: http://localhost:9200/
+Kibana: http://localhost:5601
+Logstash: localhost:5044
+
+OpenTelemetry (OTEL)
+Jaeger UI: http://localhost:16686
+Prometheus: http://localhost:9090
+Grafana: http://localhost:3000
+OTel Collector: localhost:4317 (gRPC)  /  localhost:4318 (HTTP)
+OTel Metrics: http://localhost:8889/metrics

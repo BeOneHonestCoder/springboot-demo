@@ -15,6 +15,11 @@ https://docs.spring.io/spring-boot/reference/actuator/tracing.html
 https://github.com/openzipkin/brave
 https://opentelemetry.io/docs/
 
+OpenTelemetry (OTEL)
+https://docs.spring.io/spring-boot/reference/actuator/tracing.html
+https://micrometer.io/docs/tracing
+https://opentelemetry.io/docs/concepts/components/
+https://opentelemetry.io/docs/collector/
 
 D:\Softword\prometheus-3.4.1.windows-amd64>.\prometheus.exe --config.file=prometheus.yml
 
