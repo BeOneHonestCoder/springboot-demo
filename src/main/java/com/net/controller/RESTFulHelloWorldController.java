@@ -1,6 +1,7 @@
 package com.net.controller;
 
 
+import com.net.annotation.ActivityLog;
 import com.net.domain.ObjectFactory;
 import com.net.domain.Student;
 import com.net.dto.Post;
@@ -23,6 +24,7 @@ public class RESTFulHelloWorldController {
 
     @GetMapping("/sayRESTFulHelloWorld")
     @PreAuthorize("hasRole('USER')")
+    @ActivityLog("Test")
     public Student sayHelloWorld(
             @RequestParam(name = "name", required = false, defaultValue = "RESTFulHelloWorld") String name) {
         Student std = ObjectFactory.getInstance().createStudent();
