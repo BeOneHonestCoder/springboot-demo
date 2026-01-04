@@ -1,10 +1,9 @@
 DROP TABLE IF EXISTS `user_test`;
 
-CREATE TABLE `user_test`(
-   `id` INT AUTO_INCREMENT,
-   `name` VARCHAR(100) NOT NULL,
-   `birthday` DATE NOT NULL,
-   `createts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   PRIMARY KEY ( `id` ),
-   UNIQUE KEY (`name`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE user_test (
+   id INT AUTO_INCREMENT PRIMARY KEY,
+   name VARCHAR(100) NOT NULL,
+   birthday DATE NOT NULL,
+   createts TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+   CONSTRAINT uk_user_test_name UNIQUE (name)
+);

@@ -1,6 +1,6 @@
-import com.net.domain.Student
-import spock.lang.Specification
+package com.net.domain
 
+import spock.lang.Specification
 
 class StudentTest extends Specification {
 

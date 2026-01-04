@@ -7,17 +7,17 @@
         <result property="birthday" column="birthday"/>
         <result property="createts" column="createts"/>
     </resultMap>
-    <insert id="saveUser" parameterType="com.net.domain.User">
+    <insert id="saveUser" parameterType="com.net.domain.User" useGeneratedKeys="true" keyProperty="user.id">
         INSERT INTO `user_dtl` (`name`,
         `birthday`,
         `createts`)
         VALUES (#{user.name},
         #{user.birthday},
-        NOW())
+        CURRENT_TIMESTAMP)
     </insert>
     <update id="updateUser" parameterType="com.net.domain.User">
         UPDATE user_dtl
-        SET name=#{user.name}, birthday=#{user.birthday}, createts=NOW()
+        SET name=#{user.name}, birthday=#{user.birthday}, createts=CURRENT_TIMESTAMP
         WHERE id=#{user.id}
     </update>
     <delete id="deleteById" parameterType="java.util.Map">

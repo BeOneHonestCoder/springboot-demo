@@ -9,7 +9,7 @@
         <dependencySet>
             <outputDirectory>/lib</outputDirectory>
             <includes>
-                <include>mysql:mysql-connector-java</include>
+                <include>com.mysql:mysql-connector-j</include>
             </includes>
         </dependencySet>
     </dependencySets>
