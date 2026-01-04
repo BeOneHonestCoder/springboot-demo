@@ -4,6 +4,8 @@ https://github.com/tporadowski/redis/releases
 
 redis help document
 https://docs.spring.io/spring-data/redis/reference/redis/getting-started.html
+https://spring.io/projects/spring-data-redis
+https://redis.io/docs/latest/
 https://redis.io/docs/latest/commands/
 
 C:\Users\lenov>redis-cli PING

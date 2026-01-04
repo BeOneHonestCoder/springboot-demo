@@ -1,5 +1,9 @@
 package com.net.config;
 
+import io.lettuce.core.resource.ClientResources;
+import io.lettuce.core.resource.DefaultClientResources;
+import io.lettuce.core.tracing.MicrometerTracing;
+import io.micrometer.observation.ObservationRegistry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
@@ -21,6 +25,21 @@ import java.time.Duration;
 @Configuration
 @EnableCaching
 public class RedisConfig implements CachingConfigurer {
+
+    /**
+     * [CORE FIX] Explicitly define ClientResources
+     * Purpose: Override the default Spring Boot resource manager to force Micrometer observation injection.
+     * Without this Bean, Redis Tracing and Metrics (lettuce.command.*) often fail to activate in Spring Boot 3.
+     *
+     * @param observationRegistry The observation registry auto-configured by Spring Boot.
+     * @return Redis client resources with Tracing enabled.
+     */
+    @Bean(destroyMethod = "shutdown")
+    public ClientResources clientResources(ObservationRegistry observationRegistry) {
+        return DefaultClientResources.builder()
+                .tracing(new MicrometerTracing(observationRegistry, "redis-client"))
+                .build();
+    }
 
     /**
      * PRO CacheManager Configuration:
