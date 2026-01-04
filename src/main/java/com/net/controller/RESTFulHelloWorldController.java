@@ -25,13 +25,20 @@ public class RESTFulHelloWorldController {
     @GetMapping("/sayRESTFulHelloWorld")
     @PreAuthorize("hasRole('USER')")
     @ActivityLog("Test")
-    public Student sayHelloWorld(
+    public Student sayRESTFulHelloWorld(
             @RequestParam(name = "name", required = false, defaultValue = "RESTFulHelloWorld") String name) {
+        log.info("REST Hello World!");
         Student std = ObjectFactory.getInstance().createStudent();
         std.setId(1);
         std.setName(name);
 
         return std;
+    }
+
+    @GetMapping("/sayHelloWorld")
+    public String sayHelloWorld() {
+        log.info("Hello World!");
+        return "Hello World!";
     }
 
     @GetMapping("/testJsonMapper")
