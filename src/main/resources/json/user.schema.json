@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.net.com/schemas/v1/user.schema.json",
+  "title": "User",
+  "description": "User definition for the authentication system",
+  "javaType": "com.net.domain.autogen.User",
+  "required": [
+    "username",
+    "email"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "description": "The unique username of the user"
+    },
+    "age": {
+      "type": "integer",
+      "description": "Age of the user in years"
+    },
+    "email": {
+      "type": "string",
+      "description": "Primary contact email address"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "GUEST",
+        "USER",
+        "ADMIN"
+      ],
+      "default": "USER",
+      "description": "The authorization role assigned to the user"
+    }
+  },
+  "additionalProperties": false
+}
