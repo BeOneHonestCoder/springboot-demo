@@ -1,0 +1,57 @@
+# --- 第一部分：Deployment (定义应用如何运行) ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-app-deployment
+  labels:
+    app: springboot-app
+spec:
+  replicas: 1  # 副本数量，开发环境 1 个就够
+  selector:
+    matchLabels:
+      app: springboot-app
+  template:
+    metadata:
+      labels:
+        app: springboot-app
+    spec:
+      containers:
+        - name: springboot-container
+          # 【注意 1】这里必须跟你在 docker build -t 后面的名字完全一致
+          image: my-springboot-app:v1
+          
+          # 【注意 2】关键设置！
+          # Never: 告诉 K8s 绝对不要去互联网下载镜像，只用本地 Docker 里的。
+          # 如果不写这行，K8s 可能会试图去 DockerHub 下载从而报错。
+          imagePullPolicy: Never
+          
+          ports:
+            - containerPort: 8080 # Spring Boot 默认端口
+          
+          # 【注意 3】环境变量覆盖配置
+          env:
+            - name: SPRING_DATASOURCE_URL
+              # host.docker.internal 代表宿主机（你的电脑）
+              # 如果你之前的 MySQL 端口改为了 3307，请把下面的 3306 改成 3307
+              value: "jdbc:mysql://host.docker.internal:3306/test?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "root"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "123456"
+
+---
+# --- 第二部分：Service (定义如何从浏览器访问) ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-app-service
+spec:
+  selector:
+    app: springboot-app # 必须跟上面的 labels 对应
+  ports:
+    - protocol: TCP
+      port: 8080       # 浏览器访问的端口
+      targetPort: 8080 # 容器内部 Spring Boot 的端口
+  # 【注意 4】LoadBalancer 类型
+  # 在 Docker Desktop 中，这会自动把 localhost:8080 映射到服务上
+  type: LoadBalancer

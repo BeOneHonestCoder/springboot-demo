@@ -5,6 +5,8 @@ docker help document
 https://docs.docker.com/desktop/setup/install/windows-install/
 https://docs.docker.com/compose/
 https://vuepress.mirror.docker-practice.com/
+https://docs.docker.com/reference/dockerfile
+https://kubernetes.io/zh-cn/docs/reference/kubectl/
 
 ELK
 Elasticsearch: http://localhost:9200/
@@ -26,3 +28,4 @@ D:\Java\otel-stack>docker-compose up -d
 D:\Java\elk-stack>docker-compose up -d
 D:\Java\mongodb-stack>docker-compose up -d
 D:\Java\nginx-stack>docker-compose up -d
+D:\Java\mysql-stack>docker-compose up -d
