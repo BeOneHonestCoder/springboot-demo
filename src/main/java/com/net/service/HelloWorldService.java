@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Optional;
 
@@ -23,8 +24,9 @@ public class HelloWorldService {
     private final Tracer tracer;
     private final JsonPlaceholderClient jsonPlaceholderClient;
     private final SyncService syncService;
+    private final WebClient jsonPlaceholderWebClient;
 
-    public void doSyncWork() {
+    public void triggerAsyncWork() {
         log.info("Started sync work");
         printTrace();
         syncService.doAsyncWork1();
@@ -33,6 +35,12 @@ public class HelloWorldService {
     }
 
     public Post getPostById(Long id) {
+        Post post = jsonPlaceholderWebClient.get()
+                .uri("/posts/{id}", id)
+                .retrieve()
+                .bodyToMono(Post.class)
+                .block();
+        log.info("Post details: {}", post);
         return jsonPlaceholderClient.getPostById(id);
     }
 

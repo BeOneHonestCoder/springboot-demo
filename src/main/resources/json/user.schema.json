@@ -3,7 +3,7 @@
   "$id": "https://api.net.com/schemas/v1/user.schema.json",
   "title": "User",
   "description": "User definition for the authentication system",
-  "javaType": "com.net.domain.autogen.User",
+  "javaType": "com.net.domain.autogen.UserDetails",
   "required": [
     "username",
     "email"
