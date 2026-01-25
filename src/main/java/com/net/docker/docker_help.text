@@ -22,6 +22,7 @@ OTel Collector: localhost:4317 (gRPC)  /  localhost:4318 (HTTP)
 OTel Metrics: http://localhost:8889/metrics
 
 How to startup via CMD
+PS C:\Users\lenov> docker update --restart=no $(docker ps -a -q)
 D:\Java\kafka-stack>docker-compose up -d
 D:\Java\redis-stack>docker-compose up -d
 D:\Java\otel-stack>docker-compose up -d
@@ -29,3 +30,4 @@ D:\Java\elk-stack>docker-compose up -d
 D:\Java\mongodb-stack>docker-compose up -d
 D:\Java\nginx-stack>docker-compose up -d
 D:\Java\mysql-stack>docker-compose up -d
+D:\Java\minio-stack>docker-compose up -d

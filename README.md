@@ -8,6 +8,7 @@ https://github.com/javastacks/spring-boot-best-practice
 application.properties
 https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 https://docs.spring.io/spring-boot/appendix/application-properties/index.html
+https://docs.spring.io/spring-cloud-commons/reference/configprops.html
 https://docs.spring.io/spring-cloud-gateway/reference/appendix.html
 
 Serving Web Content with Spring MVC
@@ -27,6 +28,7 @@ Springfox
 http://springfox.github.io/springfox/docs/current/
 https://springdoc.org/
 http://localhost:8080/swagger-ui/index.html
+https://springdoc.org/#properties
 
 Spring security + Oauth2
 https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide
