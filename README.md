@@ -53,3 +53,7 @@ https://github.com/lukas-krecan/ShedLock
 
 FF4J
 https://github.com/ff4j/ff4j
+
+JavaGuide
+https://github.com/Snailclimb/JavaGuide
+https://github.com/doocs/advanced-java
