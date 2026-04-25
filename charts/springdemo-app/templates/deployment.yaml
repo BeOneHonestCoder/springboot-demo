@@ -46,7 +46,7 @@ spec:
             - name: SPRING_DATASOURCE_USERNAME
               value: "root"
             - name: SPRING_DATASOURCE_PASSWORD
-              value: { { .Values.mysql.auth.rootPassword | quote } }
+              value: {{ .Values.mysql.auth.rootPassword | quote }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
