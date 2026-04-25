@@ -122,3 +122,15 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# ------------------------------------------------------------------------------
+# MySQL Chart Configuration (Bitnami Dependency)
+# ------------------------------------------------------------------------------
+mysql:
+  enabled: true
+  auth:
+    database: "test"
+    rootPassword: "123456"
+  primary:
+    persistence:
+      enabled: false
