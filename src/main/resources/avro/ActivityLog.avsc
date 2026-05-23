@@ -1,0 +1,54 @@
+{
+  "type": "record",
+  "name": "ActivityLogEvent",
+  "namespace": "com.net.avro",
+  "doc": "Schema for ActivityLog",
+  "fields": [
+    {
+      "name": "activityType",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "operationStatus",
+      "type": ["null", "int"],
+      "default": null
+    },
+    {
+      "name": "requestUrl",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "requestHeader",
+      "type": ["null", { "type": "map", "values": "string" }],
+      "default": null,
+      "doc": "Map of string keys to string values"
+    },
+    {
+      "name": "requestParameter",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "requestBody",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "responseHeader",
+      "type": ["null", { "type": "map", "values": "string" }],
+      "default": null
+    },
+    {
+      "name": "responseBody",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "timestamp",
+      "type": ["null", "string"],
+      "default": null
+    }
+  ]
+}

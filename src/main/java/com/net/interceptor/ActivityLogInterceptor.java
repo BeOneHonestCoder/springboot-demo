@@ -1,7 +1,7 @@
 package com.net.interceptor;
 
 import com.net.annotation.ActivityLog;
-import com.net.dto.ActivityLogDTO;
+import com.net.avro.ActivityLogEvent;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +28,7 @@ public class ActivityLogInterceptor implements HandlerInterceptor {
 
     @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
+
     @Autowired
     private Executor taskExecutor2;
 
@@ -46,23 +47,28 @@ public class ActivityLogInterceptor implements HandlerInterceptor {
         ContentCachingRequestWrapper reqWrapper = (ContentCachingRequestWrapper) request;
         ContentCachingResponseWrapper resWrapper = (ContentCachingResponseWrapper) response;
 
-        ActivityLogDTO dto = ActivityLogDTO.builder()
-                .activityType(annotation.value())
-                .requestUrl(request.getRequestURI())
-                .operationStatus(response.getStatus())
-                .requestHeader(extractRequestHeaders(request))
-                .responseHeader(extractResponseHeaders(response))
-                .requestParameter(request.getQueryString())
-                .requestBody(new String(reqWrapper.getContentAsByteArray(), StandardCharsets.UTF_8))
-                .responseBody(new String(resWrapper.getContentAsByteArray(), StandardCharsets.UTF_8))
-                .timestamp(LocalDateTime.now().toString())
+        ActivityLogEvent avroEvent = ActivityLogEvent.newBuilder()
+                .setActivityType(annotation.value())
+                .setRequestUrl(request.getRequestURI())
+                .setOperationStatus(response.getStatus())
+                .setRequestHeader(extractRequestHeaders(request))
+                .setResponseHeader(extractResponseHeaders(response))
+                .setRequestParameter(request.getQueryString())
+                .setRequestBody(reqWrapper.getContentAsByteArray().length > 0 ?
+                        new String(reqWrapper.getContentAsByteArray(), StandardCharsets.UTF_8) : null)
+                .setResponseBody(resWrapper.getContentAsByteArray().length > 0 ?
+                        new String(resWrapper.getContentAsByteArray(), StandardCharsets.UTF_8) : null)
+                .setTimestamp(LocalDateTime.now().toString())
                 .build();
+
         CompletableFuture.runAsync(() -> {
             log.info("[ActivityLog-Async] Thread '{}' started processing log...", Thread.currentThread().getName());
 
-            kafkaTemplate.send("orders", dto).whenComplete((result, ex) -> {
+            kafkaTemplate.send("orders", avroEvent).whenComplete((result, ex) -> {
                 if (ex != null) {
                     log.error("[ActivityLog-Kafka] Error sending to Kafka: {}", ex.getMessage());
+                } else {
+                    log.debug("[ActivityLog-Kafka] Avro message sent successfully.");
                 }
             });
         }, taskExecutor2);

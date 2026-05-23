@@ -1,6 +1,6 @@
 package com.net.kafka;
 
-import com.net.dto.ActivityLogDTO;
+import com.net.avro.ActivityLogEvent;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -9,9 +9,15 @@ import org.springframework.stereotype.Component;
 public class KafkaMessageListener {
 
     @KafkaListener(topics = "orders", groupId = "order-group")
-    public void handleOrder(ConsumerRecord<String, ActivityLogDTO> record) {
-        System.out.printf("Received order: key=%s, value=%s%n",
-                record.key(), record.value());
+    public void handleOrder(ConsumerRecord<String, ActivityLogEvent> record) {
+        ActivityLogEvent eventLog = record.value();
+
+        System.out.printf("Received log: key=%s, type=%s, status=%s, url=%s, time=%s%n",
+                record.key(),
+                eventLog.getActivityType(),
+                eventLog.getOperationStatus(),
+                eventLog.getRequestUrl(),
+                eventLog.getTimestamp());
     }
 
 //    @KafkaListener(topics = "${kafka.topic}")

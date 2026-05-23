@@ -34,6 +34,7 @@ public class RESTFulHelloWorldController {
     }
 
     @GetMapping("/hello")
+    @ActivityLog("Hello")
     public ResponseEntity<String> simpleHello() {
         log.info("Hello World!");
         return ResponseEntity.ok("Hello World!");
