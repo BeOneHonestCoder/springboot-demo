@@ -57,6 +57,9 @@ https://github.com/ff4j/ff4j
 Schema Registry
 https://github.com/confluentinc/schema-registry
 
+Apache HttpComponents
+https://hc.apache.org/index.html
+
 JavaGuide
 https://github.com/Snailclimb/JavaGuide
 https://github.com/doocs/advanced-java
