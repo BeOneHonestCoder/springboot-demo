@@ -1,6 +1,7 @@
 package com.net.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.net.client.SelfSignedClient;
 import com.net.client.JsonPlaceholderClient;
 import com.net.domain.ObjectFactory;
 import com.net.domain.Student;
@@ -23,6 +24,7 @@ public class HelloWorldService {
     private final JsonMapper mapper;
     private final Tracer tracer;
     private final JsonPlaceholderClient jsonPlaceholderClient;
+    private final SelfSignedClient selfSignedClient;
     private final SyncService syncService;
     private final WebClient jsonPlaceholderWebClient;
 
@@ -42,6 +44,10 @@ public class HelloWorldService {
                 .block();
         log.info("Post details: {}", post);
         return jsonPlaceholderClient.getPostById(id);
+    }
+
+    public String testSelfSigned() {
+        return selfSignedClient.testSelfSigned();
     }
 
     public Student getStudent() {

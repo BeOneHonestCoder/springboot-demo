@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
-        name = "jsonplaceholder",
+        name = "jsonplaceholder-client",
         url = "${jsonplaceholder.url:https://jsonplaceholder.typicode.com}",
         configuration = HttpFeignClientConfig.class
 )

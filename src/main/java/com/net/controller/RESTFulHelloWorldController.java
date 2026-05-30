@@ -46,6 +46,11 @@ public class RESTFulHelloWorldController {
         return ResponseEntity.ok(post);
     }
 
+    @GetMapping("/test/self-signed")
+    public ResponseEntity<String> testSelfSigned() {
+        return ResponseEntity.ok(helloWorldService.testSelfSigned());
+    }
+
     @GetMapping("/demo")
     public ResponseEntity<String> demo() {
         helloWorldService.triggerAsyncWork();
